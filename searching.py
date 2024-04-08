@@ -1,5 +1,8 @@
+import json
 import os
+import json
 
+template = "GA"
 # get current working directory path
 cwd_path = os.getcwd()
 
@@ -11,7 +14,10 @@ def read_data(file_name, field):
     :param field: (str), field of a dict to return
     :return: (list, string),
     """
-    file_path = os.path.join(cwd_path, file_name)
+    with open(file_name) as data_file:
+        data = json.load(data_file)
+    for i in data[2]:
+
 
 
 def main():
