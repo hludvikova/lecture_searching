@@ -34,38 +34,40 @@ def read_data(file_name, field):
             continue
     return middle_char
 
+def pattern_search(seq, pattern):
+    positions = set()
+    pattern_length = len(pattern)
+    for i in range(len(seq)):
+        if seq[i:i+pattern_length] == pattern:
+            positions.add(i)
+    return positions
 
 
+def binary_search(numbers, target):
+    low = 0
+    high = len(numbers) - 1
 
-def pattern_search(seq, template):
-    middle_char=[]
-    with open("sequential.json") as data_file:
-        data = json.load(data_file)
-    i=0
-
-    if "dna_sequence" in data:
-        print("Key exist in JSON data")
-        for dna_sequence in data:
-            if i == template[0]:
-                i+=1
-                if i == template[1]:
-                    x = int(len(data[2])/2)
-
-                else:
-                    continue
-            else:
-                continue
-    else:
-        print("Key doesn't exist in JSON data")
-        middle_char
-
-    return middle_char
-
-
-
+    while low <= high:
+        mid = (low + high) // 2
+        if numbers[mid] < target:
+            low = mid + 1
+        elif numbers[mid] > target:
+            high = mid - 1
+        else:
+            return mid
+    return None
 
 def main():
-    pass
+    with open('sequential.json', 'r') as f:
+        data = json.load(f)
+    numbers = data['ordered_numbers']
+    target = 42  # Zde můžete definovat hledané číslo
+    result = binary_search(numbers, target)
+    print(f'Index of {target}: {result}')
+
+if __name__ == '__main__':
+    main()
+
 
 
 if __name__ == '__main__':
