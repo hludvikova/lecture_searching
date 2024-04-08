@@ -21,10 +21,10 @@ def read_data(file_name, field):
     i=0
     for i in data[2]:
         if i == template[0]:
-            i+=1
+            i += 1
             if i == template[1]:
                 x = int(len(data[2])/2)
-                if len(data[2])%2!=0:
+                if len(data[2]) % 2 != 0:
                     return middle_char.append(data[x])
                 else:
                     return middle_char.append(data[2][x-1:x+1])
@@ -32,6 +32,7 @@ def read_data(file_name, field):
                 continue
         else:
             continue
+    i += 1
     return middle_char
 
 def pattern_search(seq, pattern):
@@ -64,10 +65,6 @@ def main():
     target = 42  # Zde můžete definovat hledané číslo
     result = binary_search(numbers, target)
     print(f'Index of {target}: {result}')
-
-if __name__ == '__main__':
-    main()
-
 
 
 if __name__ == '__main__':
