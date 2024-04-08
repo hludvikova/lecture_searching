@@ -17,6 +17,7 @@ def read_data(file_name, field):
     with open(file_name) as data_file:
         data = json.load(data_file)
     for i in data[2]:
+        
 
 
 
